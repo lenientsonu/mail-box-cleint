@@ -1,0 +1,74 @@
+* {
+    color: #2dcbce;
+}
+
+.form {
+    text-align: center;
+    /* background-color: #2c3531; */
+    background-image: linear-gradient(to bottom right, #2c3531, #116466);
+    padding: 1rem;
+    margin: 2rem auto;
+    margin-top: 10rem;
+    width: 22.5rem;
+    max-width: 95%;
+    border-radius: 12px;
+    box-shadow: 0 1px 8px rgba(0, 0, 0, 0.25);
+}
+
+.form h1 {
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+    color: #2dcbce;
+}
+
+.form input {
+    font-size: 1.3rem;
+    margin: 0.25rem;
+    border-radius: 0.5rem;
+}
+
+.form button {
+    font: inherit;
+    cursor: pointer;
+    padding: 0.5rem 1rem;
+    border: 0.1rem solid #2dcbce;
+    /* background-color: #116466; */
+    background-image: linear-gradient(to bottom right, #2c3531, #116466);
+    color: #2dcbce;
+    border-radius: 12px;
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+}
+
+.form button:hover,
+.form button:active {
+    /* background-color: #2dcbce; */
+    background-image: linear-gradient(to top left, #2c3531, #116466);
+}
+
+.form button.alternative {
+    color: #116466;
+    border-color: transparent;
+    background-color: transparent;
+}
+
+.form button.alternative:hover,
+.form button.alternative:active {
+    background-color: #2dcbce;
+}
+
+h3 {
+    text-align: center;
+    background-color: transparent;
+    border: 1px solid #2dcbce;
+    color: white;
+    border-radius: 0.5rem;
+    font-size: 1.2rem;
+    width: 25%;
+    margin: 0 auto;
+    padding: 0.5rem;
+}
+h3 a {
+    text-decoration: none;
+    color: #2dcbce;
+}
