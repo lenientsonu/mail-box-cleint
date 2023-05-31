@@ -1,18 +1,9 @@
-import NewExpense from "../NewExpense/NewExpense";
-import Expenses from "../Expenses/Expenses";
-
-import Header from "../Layout/Header";
+// import Header from "../Layout/Header";
 
 const Homepage = (props) => {
     return (
         <>
-            <header>
-                <Header />
-            </header>
-            <main>
-                <NewExpense />
-                <Expenses />
-            </main>
+            <h1>Welcome to your mail box</h1>
         </>
     );
 };

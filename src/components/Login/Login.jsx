@@ -1,67 +1,46 @@
-import { useRef } from "react";
+import { useRef, useState } from "react";
 import { useHistory } from "react-router-dom";
 import axios from "axios";
-import { useSelector, useDispatch } from "react-redux";
+import { useDispatch } from "react-redux";
 
 import { authActions } from "../../store/authSlice";
-import { uiActions } from "../../store/uiSlice";
 
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 import FloatingLabel from "react-bootstrap/FloatingLabel";
 
-import Notification from "../UI/Notification";
-
 import "./Login.css";
 
 const Login = (props) => {
+    const dispatch = useDispatch();
+    const [loading, setLoading] = useState(false);
     const emailRef = useRef();
     const passRef = useRef();
     const history = useHistory();
-    const dispatch = useDispatch();
-    const notification = useSelector((state) => state.ui.notification);
 
     //firebase auth
     const authenticate = async (email, password) => {
         try {
-            dispatch(
-                uiActions.showNotification({
-                    status: "pending",
-                    title: "Pending",
-                    message: "Logging You In",
-                })
-            );
+            setLoading(true);
             const response = await axios.post(
-                "https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=AIzaSyDmaC9PUexvjOMQr2wvhteHn23kFPTmuj0",
+                "https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=AIzaSyBPBsv5yucMhZZJeE8XIccwuZMrF31hrx8",
                 {
                     email: email,
                     password: password,
                     returnSecureToken: true,
                 }
             );
+            console.log(response.data);
             dispatch(
                 authActions.login({
                     token: response.data.idToken,
                     email: email,
                 })
             );
-            dispatch(
-                uiActions.showNotification({
-                    status: "success",
-                    title: "Success!",
-                    message: "Logged in successfully",
-                })
-            );
         } catch (error) {
-            dispatch(
-                uiActions.showNotification({
-                    status: "error",
-                    title: "Error!",
-                    message: error.response.data.error.message,
-                })
-            );
+            alert(error.response.data.error.message);
         } finally {
-            dispatch(uiActions.hideNotification());
+            setLoading(false);
             history.replace("/home");
         }
     };
@@ -86,15 +65,8 @@ const Login = (props) => {
 
     return (
         <>
-            {notification && (
-                <Notification
-                    status={notification.status}
-                    title={notification.title}
-                    message={notification.message}
-                />
-            )}
             <Form className='form' onSubmit={submitHandler}>
-                <h2>Log In</h2>
+                <h1>Log In</h1>
                 <FloatingLabel
                     controlId='floatingInput'
                     label=''
@@ -114,8 +86,8 @@ const Login = (props) => {
                     />
                 </FloatingLabel>
 
-                <Button type='submit' disabled={notification}>
-                    {notification ? "Logging In" : "Login"}
+                <Button type='submit' disabled={loading}>
+                    {loading ? "Logging In" : "Login"}
                 </Button>
                 <br />
                 <Button className='forgot-btn' onClick={forgotHandler}>
