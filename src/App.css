@@ -1,7 +1,24 @@
-body .dark {
-    background-color: #1A1A1D;
+button {
+    font: inherit;
+    cursor: pointer;
+    border: 0.1rem solid #2dcbce;
+    background-image: linear-gradient(to bottom right, #2c3531, #116466);
+    color: #2dcbce;
+    border-radius: 12px;
 }
 
-body .light {
-    background-color: #4E4E50;
+button:hover,
+button:active {
+    background-image: linear-gradient(to top left, #2c3531, #116466);
+}
+
+button.alternative {
+    color: #116466;
+    border-color: transparent;
+    background-color: transparent;
+}
+
+button.alternative:hover,
+button.alternative:active {
+    background-color: #2dcbce;
 }

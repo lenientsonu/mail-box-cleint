@@ -83,11 +83,11 @@ const SignUp = (props) => {
                 <Button type='submit' disabled={loading}>
                     {loading ? "Loading..." : "Sign Up"}
                 </Button>
+                <h3>
+                    Have an Account?
+                    <a href='/login'> Login</a>
+                </h3>
             </Form>
-            <h3>
-                Have an Account?
-                <a href='/login'> Login</a>
-            </h3>
         </>
     );
 };

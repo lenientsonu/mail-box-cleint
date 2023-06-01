@@ -10,6 +10,7 @@ import { Editor } from "react-draft-wysiwyg";
 import { EditorState } from "draft-js";
 import "react-draft-wysiwyg/dist/react-draft-wysiwyg.css";
 
+import Header from "../Layout/Header";
 import "./Compose.css";
 
 const Compose = () => {
@@ -54,35 +55,42 @@ const Compose = () => {
     };
 
     return (
-        <Form className='form' onSubmit={onSubmitHandler}>
-            <h1>Compose Email</h1>
-            <FloatingLabel controlId='floatingInput' label='' className='mb-3'>
-                <Form.Control
-                    type='email'
-                    placeholder='To..'
-                    ref={emailInputRef}
-                />
-            </FloatingLabel>
-            <FloatingLabel controlId='floatingPassword' label=''>
-                <Form.Control
-                    type='text'
-                    placeholder='Subject..'
-                    ref={subjectInputRef}
-                />
-            </FloatingLabel>
+        <>
+            <Header />
+            <Form className='form' onSubmit={onSubmitHandler}>
+                <h1>Compose Email</h1>
+                <FloatingLabel
+                    controlId='floatingInput'
+                    label=''
+                    className='mb-3'
+                >
+                    <Form.Control
+                        type='email'
+                        placeholder='To..'
+                        ref={emailInputRef}
+                    />
+                </FloatingLabel>
+                <FloatingLabel controlId='floatingPassword' label=''>
+                    <Form.Control
+                        type='text'
+                        placeholder='Subject..'
+                        ref={subjectInputRef}
+                    />
+                </FloatingLabel>
 
-            <Editor
-                editorState={editorInput}
-                toolbarOnFocus
-                toolbarClassName='toolbar'
-                wrapperClassName='wrapper'
-                editorClassName='editor'
-                placeholder='Write your mail...'
-                onEditorStateChange={onEditorStateChange}
-            />
+                <Editor
+                    editorState={editorInput}
+                    toolbarOnFocus
+                    toolbarClassName='toolbar'
+                    wrapperClassName='wrapper'
+                    editorClassName='editor'
+                    placeholder='Write your mail...'
+                    onEditorStateChange={onEditorStateChange}
+                />
 
-            <Button type='submit'>Send</Button>
-        </Form>
+                <Button type='submit'>Send</Button>
+            </Form>
+        </>
     );
 };
 

@@ -9,7 +9,7 @@ import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 import FloatingLabel from "react-bootstrap/FloatingLabel";
 
-import "./Login.css";
+// import "./Login.css";
 
 const Login = (props) => {
     const dispatch = useDispatch();
@@ -93,12 +93,11 @@ const Login = (props) => {
                 <Button className='forgot-btn' onClick={forgotHandler}>
                     Forgot password?
                 </Button>
+                <h3>
+                    Don't have a Account?
+                    <a href='/signup'> Sign Up</a>
+                </h3>
             </Form>
-
-            <h3>
-                Don't have a Account?
-                <a href='/signup'> Sign Up</a>
-            </h3>
         </>
     );
 };

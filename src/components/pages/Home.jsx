@@ -1,9 +1,11 @@
-// import Header from "../Layout/Header";
+
+import Header from "../Layout/Header";
 
 const Homepage = (props) => {
     return (
         <>
-            <h1>Welcome to your mail box</h1>
+            <Header />
+            <h1>Welcome to your Strike Mail</h1>
         </>
     );
 };
