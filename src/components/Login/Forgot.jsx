@@ -13,7 +13,7 @@ const Forgot = () => {
         try {
             setIsLoading(true);
             const response = await axios.post(
-                "https://identitytoolkit.googleapis.com/v1/accounts:sendOobCode?key=AIzaSyDmaC9PUexvjOMQr2wvhteHn23kFPTmuj0",
+                "https://identitytoolkit.googleapis.com/v1/accounts:sendOobCode?key=AIzaSyBPBsv5yucMhZZJeE8XIccwuZMrF31hrx8",
                 {
                     requestType: "PASSWORD_RESET",
                     email: email,
@@ -21,7 +21,7 @@ const Forgot = () => {
             );
             console.log(response.data);
         } catch (error) {
-            console.log(error);
+            alert(error.response.data.error.message);
         } finally {
             setIsLoading(false);
         }
@@ -49,13 +49,9 @@ const Forgot = () => {
                     />
                 </FloatingLabel>
 
-                {isLoading === true ? (
-                    <p>Loading...</p>
-                ) : (
-                    <Button variant='primary' type='submit'>
-                        Send Link
-                    </Button>
-                )}
+                <Button type='submit' disabled={isLoading}>
+                    {isLoading ? "Sending..." : "Send Link"}
+                </Button>
                 <br />
             </Form>
 

@@ -1,0 +1,35 @@
+.ltr {
+    text-align: left;
+}
+
+.rtl {
+    text-align: right;
+}
+
+.form {
+    background: transparent;
+    width: 100%;
+    height: max-content;
+    margin: 2rem;
+    text-align: center;
+}
+
+.toolbar {
+    background-color: transparent;
+    margin-top: 3rem;
+    margin-bottom: 0;
+    justify-content: center;
+    border: none;
+}
+
+.editor {
+    background-color: transparent;
+    border: 1px solid #2dcbce;
+    border-radius: 10px;
+    min-height: 200px;
+    box-shadow: 0 1px 8px rgba(0, 0, 0, 0.25);
+    padding: 1rem;
+    margin: 1rem;
+    overflow: hidden;
+}
+
