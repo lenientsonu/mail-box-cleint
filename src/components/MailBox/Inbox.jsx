@@ -37,9 +37,9 @@ const Inbox = () => {
     }, [email, dispatch]);
 
     useEffect(() => {
-        setInterval(() => {
+        // setInterval(() => {
             getFromServer();
-        }, 2000);
+        // }, 2000);
     }, [getFromServer]);
 
     return (

@@ -1,9 +1,12 @@
 import React, { useRef, useState } from "react";
 import axios from "axios";
+import { NavLink } from "react-router-dom";
 
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 import FloatingLabel from "react-bootstrap/FloatingLabel";
+
+import "./SignUp.css";
 
 const Forgot = () => {
     const [isLoading, setIsLoading] = useState(false);
@@ -36,7 +39,7 @@ const Forgot = () => {
     return (
         <>
             <Form className='form' onSubmit={submitHandler}>
-                <h2>Forgot Password</h2>
+                <h1 className='form__header'>Forgot Password</h1>
                 <FloatingLabel
                     controlId='floatingInput'
                     label=''
@@ -53,12 +56,11 @@ const Forgot = () => {
                     {isLoading ? "Sending..." : "Send Link"}
                 </Button>
                 <br />
+                <h3 className='form__footer'>
+                    Have an Account?
+                    <NavLink to='/login'>Login</NavLink>
+                </h3>
             </Form>
-
-            <h3>
-                Have an Account?
-                <a href='/login'> Login</a>
-            </h3>
         </>
     );
 };

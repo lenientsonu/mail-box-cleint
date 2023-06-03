@@ -16,10 +16,16 @@ const Header = () => {
     return (
         <Container className='navbar'>
             <Navbar.Brand className='navbar-brand'>
-                <h2>Strike Mail</h2>
+                <h2>
+                    Strike
+                    <span>Mail</span>
+                </h2>
             </Navbar.Brand>
             <Nav className='me-auto navbar-nav'>
-                <h3 className="navbar__user">Signed in as: {email}</h3>
+                <h3 className='navbar__user'>
+                    Signed in as:
+                    <span>{email}</span>
+                </h3>
                 <NavLink to='/home'>
                     <Button>Home</Button>
                 </NavLink>

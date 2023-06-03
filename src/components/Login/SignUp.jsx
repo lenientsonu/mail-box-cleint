@@ -1,5 +1,6 @@
 import React, { useState, useRef } from "react";
 import axios from "axios";
+import { NavLink } from "react-router-dom";
 
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
@@ -53,7 +54,7 @@ const SignUp = (props) => {
     return (
         <>
             <Form className='form' onSubmit={submitHandler}>
-                <h1>Sign Up</h1>
+                <h1 className='form__header'>Sign Up</h1>
                 <small>* Enter all the Fields to sign up</small>
                 <FloatingLabel
                     controlId='floatingInput'
@@ -83,9 +84,9 @@ const SignUp = (props) => {
                 <Button type='submit' disabled={loading}>
                     {loading ? "Loading..." : "Sign Up"}
                 </Button>
-                <h3>
+                <h3 className='form__footer'>
                     Have an Account?
-                    <a href='/login'> Login</a>
+                    <NavLink to='/login'>Login</NavLink>
                 </h3>
             </Form>
         </>

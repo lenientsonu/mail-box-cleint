@@ -34,9 +34,9 @@ const SentBox = () => {
     }, [email, dispatch]);
 
     useEffect(() => {
-        setInterval(() => {
-            getFromServer();
-        }, 2000);
+        // setInterval(() => {
+        getFromServer();
+        // }, 2000);
     }, [getFromServer]);
 
     return (

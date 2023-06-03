@@ -1,20 +1,14 @@
-* {
-    color: #2dcbce;
-}
-
 .form {
     text-align: center;
     background-image: linear-gradient(to bottom right, #2c3531, #116466);
     padding: 1rem;
-    margin: 2rem auto;
-    margin-top: 10rem;
+    margin: 6rem auto;
     width: 22.5rem;
-    max-width: 95%;
     border-radius: 12px;
     box-shadow: 0 1px 8px rgba(0, 0, 0, 0.25);
 }
 
-.form h1 {
+.form__header {
     margin-top: 2rem;
     margin-bottom: 2rem;
     color: #2dcbce;
@@ -22,7 +16,7 @@
 
 .form input {
     font-size: 1.3rem;
-    margin: 0.25rem;
+    margin: 0.3rem;
     border-radius: 0.5rem;
 }
 
@@ -32,19 +26,19 @@
     margin-bottom: 2rem;
 }
 
-.form h3 {
+.form__footer {
     text-align: center;
     background-color: transparent;
     border: 1px solid #2dcbce;
     color: white;
     border-radius: 0.5rem;
     font-size: 1.2rem;
-    width: 25%;
     margin: 0 auto;
     padding: 0.5rem;
     margin-bottom: 1rem;
 }
-.form h3 a {
+.form__footer a {
     text-decoration: none;
     color: #2dcbce;
+    margin-left: .5rem;
 }

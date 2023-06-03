@@ -14,7 +14,7 @@
 .mail {
     display: flex;
     align-items: center;
-    justify-content: space-between;
+    /* justify-content: space-between; */
     padding: 0 1rem;
     box-shadow: 0.1rem 0.1rem 0.45rem #2dcbce;
 }
@@ -29,12 +29,29 @@
     width: 0.5rem;
     background-color: cyan;
     border-radius: 50%;
-    margin-right: 0.5 rem;
+    margin: 0 1rem;
+}
+.no_dot {
+    height: 0.5rem;
+    width: 0.5rem;
+    background-color: transparent;
+    border-radius: 50%;
+    margin: 0 1rem;
+}
+.mail__mailer {
+    margin: 0 1rem;
+    padding: 0 1rem;
+    width: 40%;
+}
+
+.mail__item__subject {
+    width: 40%;
 }
 
 .mail__item__delete {
     width: 1.2rem;
     transition: all 0.2s ease-in-out;
+    margin: 0 2rem;
 }
 
 .mail__item__delete:hover {

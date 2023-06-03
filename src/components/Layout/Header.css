@@ -10,8 +10,17 @@
     flex-grow: 0;
     margin-left: 1rem;
 }
+.navbar-brand h2 span {
+    color: white;
+    margin-left: 0.5rem;
+}
+
 .navbar__user {
     margin-right: 12rem;
+}
+.navbar__user span {
+    color: white;
+    margin-left: 0.5rem;
 }
 
 .navbar a {

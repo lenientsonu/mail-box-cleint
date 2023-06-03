@@ -2,6 +2,7 @@ import { useRef, useState } from "react";
 import { useHistory } from "react-router-dom";
 import axios from "axios";
 import { useDispatch } from "react-redux";
+import { NavLink } from "react-router-dom";
 
 import { authActions } from "../../store/authSlice";
 
@@ -9,7 +10,7 @@ import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 import FloatingLabel from "react-bootstrap/FloatingLabel";
 
-// import "./Login.css";
+import "./SignUp.css";
 
 const Login = (props) => {
     const dispatch = useDispatch();
@@ -66,7 +67,7 @@ const Login = (props) => {
     return (
         <>
             <Form className='form' onSubmit={submitHandler}>
-                <h1>Log In</h1>
+                <h1 className='form__header'>Log In</h1>
                 <FloatingLabel
                     controlId='floatingInput'
                     label=''
@@ -93,9 +94,9 @@ const Login = (props) => {
                 <Button className='forgot-btn' onClick={forgotHandler}>
                     Forgot password?
                 </Button>
-                <h3>
+                <h3 className='form__footer'>
                     Don't have a Account?
-                    <a href='/signup'> Sign Up</a>
+                    <NavLink to='/signup'>SignUp</NavLink>
                 </h3>
             </Form>
         </>

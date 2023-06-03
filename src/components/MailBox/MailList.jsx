@@ -81,8 +81,8 @@ const MailList = ({ id, mail, subject, unRead, message, type }) => {
 
     return (
         <ListGroup.Item className='mail' key={id} onClick={readMailHandler}>
-            {unRead && <span className='dot'></span>}
-            <span>{mail}</span>
+            <span className={unRead ? "dot" : "no_dot"}></span>
+            <span className="mail__mailer">{mail}</span>
             <p className='mail__item__subject'>{subject}</p>
             <img
                 src={deleteIcon}

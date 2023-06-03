@@ -57,8 +57,8 @@ const Compose = () => {
     return (
         <>
             <Header />
-            <Form className='form' onSubmit={onSubmitHandler}>
-                <h1>Compose Email</h1>
+            <Form className='compose__form' onSubmit={onSubmitHandler}>
+                <h1 className='compose__form__header'>Compose Email</h1>
                 <FloatingLabel
                     controlId='floatingInput'
                     label=''

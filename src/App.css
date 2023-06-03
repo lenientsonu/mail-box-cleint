@@ -1,3 +1,7 @@
+* {
+    color: #2dcbce;
+}
+
 button {
     font: inherit;
     cursor: pointer;
