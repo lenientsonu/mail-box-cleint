@@ -1,6 +1,7 @@
-import React, { useState, useRef } from "react";
-import axios from "axios";
+import React, { useRef } from "react";
 import { NavLink } from "react-router-dom";
+
+import useAxios from "../../hooks/use-axios";
 
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
@@ -9,29 +10,27 @@ import FloatingLabel from "react-bootstrap/FloatingLabel";
 import "./SignUp.css";
 
 const SignUp = (props) => {
-    const [loading, setLoading] = useState(false);
+    const { loading, error, sendRequest } = useAxios();
     const emailRef = useRef();
     const passRef = useRef();
     const cnfrmPassRef = useRef();
 
     // auth for firebase
-    const saveToServer = async (email, password) => {
-        try {
-            setLoading(true);
-            const response = await axios.post(
-                "https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=AIzaSyBPBsv5yucMhZZJeE8XIccwuZMrF31hrx8",
-                {
-                    email: email,
-                    password: password,
-                    returnSecureToken: true,
-                }
-            );
-            console.log(response.data);
-            alert("User signed up successfully");
-        } catch (error) {
-            alert(error.response.data.error.message);
-        } finally {
-            setLoading(false);
+    const signUpToServer = async (email, password) => {
+        const url =
+            "https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=AIzaSyBPBsv5yucMhZZJeE8XIccwuZMrF31hrx8";
+        const data = {
+            email: email,
+            password: password,
+            returnSecureToken: true,
+        };
+
+        const response = await sendRequest(url, "post", data);
+        if (!error && response) {
+            console.log(response);
+            console.log("User signed up successfully");
+        } else {
+            alert(error);
         }
     };
 
@@ -46,7 +45,7 @@ const SignUp = (props) => {
             if (passValue !== cnfrmPassValue) {
                 alert("Passwords Do Not Match !!");
             } else {
-                saveToServer(emailValue, passValue);
+                signUpToServer(emailValue, passValue);
             }
         }
     };

@@ -1,8 +1,9 @@
-import { useRef, useState } from "react";
+import { useRef } from "react";
 import { useHistory } from "react-router-dom";
-import axios from "axios";
 import { useDispatch } from "react-redux";
 import { NavLink } from "react-router-dom";
+
+import useAxios from "../../hooks/use-axios";
 
 import { authActions } from "../../store/authSlice";
 
@@ -13,36 +14,33 @@ import FloatingLabel from "react-bootstrap/FloatingLabel";
 import "./SignUp.css";
 
 const Login = (props) => {
+    const { loading, error, sendRequest } = useAxios();
     const dispatch = useDispatch();
-    const [loading, setLoading] = useState(false);
     const emailRef = useRef();
     const passRef = useRef();
     const history = useHistory();
 
     //firebase auth
     const authenticate = async (email, password) => {
-        try {
-            setLoading(true);
-            const response = await axios.post(
-                "https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=AIzaSyBPBsv5yucMhZZJeE8XIccwuZMrF31hrx8",
-                {
-                    email: email,
-                    password: password,
-                    returnSecureToken: true,
-                }
-            );
-            console.log(response.data);
+        const url =
+            "https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=AIzaSyBPBsv5yucMhZZJeE8XIccwuZMrF31hrx8";
+        const data = {
+            email: email,
+            password: password,
+            returnSecureToken: true,
+        };
+        const response = await sendRequest(url, "post", data);
+        if (!error && response) {
+            console.log(response);
             dispatch(
                 authActions.login({
-                    token: response.data.idToken,
+                    token: response.idToken,
                     email: email,
                 })
             );
-        } catch (error) {
-            alert(error.response.data.error.message);
-        } finally {
-            setLoading(false);
             history.replace("/home");
+        } else {
+            alert(error);
         }
     };
 

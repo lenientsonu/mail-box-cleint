@@ -1,6 +1,7 @@
-import React, { useRef, useState } from "react";
-import axios from "axios";
+import React, { useRef } from "react";
 import { NavLink } from "react-router-dom";
+
+import useAxios from "../../hooks/use-axios";
 
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
@@ -9,24 +10,21 @@ import FloatingLabel from "react-bootstrap/FloatingLabel";
 import "./SignUp.css";
 
 const Forgot = () => {
-    const [isLoading, setIsLoading] = useState(false);
+    const { loading, error, sendRequest } = useAxios();
     const emailRef = useRef();
 
     const sendLink = async (email) => {
-        try {
-            setIsLoading(true);
-            const response = await axios.post(
-                "https://identitytoolkit.googleapis.com/v1/accounts:sendOobCode?key=AIzaSyBPBsv5yucMhZZJeE8XIccwuZMrF31hrx8",
-                {
-                    requestType: "PASSWORD_RESET",
-                    email: email,
-                }
-            );
-            console.log(response.data);
-        } catch (error) {
-            alert(error.response.data.error.message);
-        } finally {
-            setIsLoading(false);
+        const url =
+            "https://identitytoolkit.googleapis.com/v1/accounts:sendOobCode?key=AIzaSyBPBsv5yucMhZZJeE8XIccwuZMrF31hrx8";
+        const data = {
+            requestType: "PASSWORD_RESET",
+            email: email,
+        };
+        const response = await sendRequest(url, "post", data);
+        if (!error && response) {
+            console.log(response);
+        } else {
+            alert(error);
         }
     };
 
@@ -52,8 +50,8 @@ const Forgot = () => {
                     />
                 </FloatingLabel>
 
-                <Button type='submit' disabled={isLoading}>
-                    {isLoading ? "Sending..." : "Send Link"}
+                <Button type='submit' disabled={loading}>
+                    {loading ? "Sending..." : "Send Link"}
                 </Button>
                 <br />
                 <h3 className='form__footer'>
