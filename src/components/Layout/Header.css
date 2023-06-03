@@ -10,8 +10,8 @@
     flex-grow: 0;
     margin-left: 1rem;
 }
-.navbar h3 {
-    margin-right: 10px;
+.navbar__user {
+    margin-right: 12rem;
 }
 
 .navbar a {
@@ -24,4 +24,9 @@
     align-items: center;
     justify-content: flex-end;
     margin-right: 1rem;
+}
+
+.active button {
+    border: 0.187rem solid cyan;
+    color: cyan;
 }

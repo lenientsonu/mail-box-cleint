@@ -19,15 +19,15 @@ const Header = () => {
                 <h2>Strike Mail</h2>
             </Navbar.Brand>
             <Nav className='me-auto navbar-nav'>
-                <h3>Signed in as: {email}</h3>
+                <h3 className="navbar__user">Signed in as: {email}</h3>
                 <NavLink to='/home'>
                     <Button>Home</Button>
                 </NavLink>
                 <NavLink to='/compose'>
                     <Button>Compose</Button>
                 </NavLink>
-                <NavLink to='/inbox'>
-                    <Button>Inbox</Button>
+                <NavLink to='/mailbox'>
+                    <Button>MailBox</Button>
                 </NavLink>
                 <Logout />
             </Nav>

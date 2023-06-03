@@ -7,6 +7,7 @@ import Login from "./components/Login/Login";
 import Forgot from "./components/Login/Forgot";
 import Compose from "./components/pages/Compose";
 import MailBox from "./components/pages/MailBox";
+import ReadMail from "./components/MailBox/ReadMail";
 
 import "./App.css";
 
@@ -24,13 +25,16 @@ const App = () => {
                     {isAuth && <Homepage />}
                     {!isAuth && <Redirect to='/login' />}
                 </Route>
-                <Route path='/inbox'>
+                <Route path='/mailbox'>
                     {isAuth && <MailBox />}
                     {!isAuth && <Redirect to='/login' />}
                 </Route>
                 <Route path='/compose'>
                     {isAuth && <Compose />}
                     {!isAuth && <Redirect to='/login' />}
+                </Route>
+                <Route path='/readmail'>
+                    <ReadMail />
                 </Route>
                 <Route path='/signup'>
                     <SignUp />

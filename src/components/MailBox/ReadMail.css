@@ -1,0 +1,34 @@
+.read__mail {
+    display: flex;
+    flex-direction: column;
+    background-color: rgba(255, 255, 255, 0.1);
+    border-radius: 1rem;
+    margin: 2rem;
+    padding: 1rem;
+}
+
+.mail__header {
+    display: flex;
+    padding: 1rem;
+    margin: 1rem;
+}
+
+.mail__header__back {
+    margin-right: 2rem;
+}
+.mail__header__subject {
+    font-weight: bold;
+    margin-left: 1rem;
+}
+
+.mail__mail {
+    margin-left: 1rem;
+    padding-left: 1rem;
+    font-size: 1.2rem;
+    font-weight: bold;
+}
+
+.mail__body {
+    margin: 2rem;
+    padding: 2rem;
+}

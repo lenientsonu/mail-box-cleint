@@ -5,11 +5,13 @@ button {
     background-image: linear-gradient(to bottom right, #2c3531, #116466);
     color: #2dcbce;
     border-radius: 12px;
+    transition: all 0.2s ease-in-out;
 }
 
 button:hover,
 button:active {
     background-image: linear-gradient(to top left, #2c3531, #116466);
+    transform: scale(1.1);
 }
 
 button.alternative {

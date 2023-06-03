@@ -1,0 +1,42 @@
+.mails {
+    display: flex;
+    flex-direction: column;
+    background-color: rgba(255, 255, 255, 0.1);
+    border-radius: 1rem;
+    margin: 2rem;
+    padding: 1rem;
+}
+
+.mails__header {
+    text-align: center;
+}
+
+.mail {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 1rem;
+    box-shadow: 0.1rem 0.1rem 0.45rem #2dcbce;
+}
+
+.mail:hover {
+    background-color: rgba(255, 255, 255, 0.07);
+    cursor: pointer;
+}
+
+.dot {
+    height: 0.5rem;
+    width: 0.5rem;
+    background-color: cyan;
+    border-radius: 50%;
+    margin-right: 0.5 rem;
+}
+
+.mail__item__delete {
+    width: 1.2rem;
+    transition: all 0.2s ease-in-out;
+}
+
+.mail__item__delete:hover {
+    transform: scale(1.2);
+}

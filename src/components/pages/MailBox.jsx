@@ -1,41 +1,47 @@
-import { useEffect, useCallback, useState } from "react";
-import axios from "axios";
+import { useState } from "react";
 import { useSelector } from "react-redux";
 
 import Header from "../Layout/Header";
-import MailList from "../Layout/MailList";
+import Inbox from "../MailBox/Inbox";
+import SentBox from "../MailBox/SentBox";
+
+import "./MailBox.css";
 
 const MailBox = () => {
-    const email = useSelector((state) => state.auth.email);
-    const [mails, setMails] = useState([]);
+    const [inbox, setInbox] = useState(true);
+    const totalUnread = useSelector((state) => state.mails.totalUnreadMails);
 
-    const getFromServer = useCallback(async () => {
-        try {
-            const response = await axios.get(
-                `https://mail-box-client-6e4dd-default-rtdb.asia-southeast1.firebasedatabase.app/${email.replace(
-                    /[@.]/g,
-                    ""
-                )}/sentmails.json`
-            );
-            const mailsFromServer = Object.keys(response.data).map((key) => {
-                return { id: key, ...response.data[key] };
-            });
-            console.log(mailsFromServer);
-            setMails(mailsFromServer);
-        } catch (error) {
-            console.log(error);
-        }
-    }, [email]);
+    const showInboxHandler = (event) => {
+        event.preventDefault();
+        setInbox(true);
+    };
 
-    useEffect(() => {
-        getFromServer();
-    }, [getFromServer]);
+    const showSentboxHandler = (event) => {
+        event.preventDefault();
+        setInbox(false);
+    };
 
     return (
-        <>
+        <div className='mailbox'>
             <Header />
-            <MailList mails={mails} />
-        </>
+            <h2 className='mailbox__header'>
+                <button
+                    className='mailbox__header__btn mailbox__header__btn_1'
+                    onClick={showInboxHandler}
+                >
+                    Inbox
+                    <span className='unread__badge'>{totalUnread}</span>
+                </button>
+                <button
+                    className='mailbox__header__btn mailbox__header__btn_2'
+                    onClick={showSentboxHandler}
+                >
+                    Sent Mails
+                </button>
+            </h2>
+            {inbox && <Inbox />}
+            {!inbox && <SentBox />}
+        </div>
     );
 };
 
