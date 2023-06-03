@@ -46,6 +46,7 @@ const SentBox = () => {
                         mail={mail.sentTo}
                         subject={mail.subject}
                         message={mail.content}
+                        type='sentbox'
                     />
                 );
             })}

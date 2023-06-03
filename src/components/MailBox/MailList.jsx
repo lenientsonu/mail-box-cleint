@@ -9,19 +9,47 @@ import { mailsAction } from "../../store/mailsSlice";
 
 import "./box.css";
 
-const MailList = ({ id, mail, subject, unRead, message }) => {
+const MailList = ({ id, mail, subject, unRead, message, type }) => {
     const dispatch = useDispatch();
     const history = useHistory();
     const email = useSelector((state) => state.auth.email);
 
+    const deleteFromServer = async (id, type) => {
+        try {
+            let whichUrl = "";
+            if (type === "inbox") {
+                whichUrl = "recivedmails";
+            }
+            if (type === "sentbox") {
+                whichUrl = "sentmails";
+            }
+            await axios.delete(
+                `https://mail-box-client-6e4dd-default-rtdb.asia-southeast1.firebasedatabase.app/${email.replace(
+                    /[@.]/g,
+                    ""
+                )}/${whichUrl}/${id}.json`
+            );
+        } catch (error) {
+            alert(error);
+        }
+    };
+
     const deleteMailHandler = (event) => {
         event.preventDefault();
-        console.log(id);
+        event.stopPropagation();
+        // console.log(id);
+        if (type === "inbox") {
+            dispatch(mailsAction.removeRecievedMail(id));
+        }
+        if (type === "sentbox") {
+            dispatch(mailsAction.removeSentMail(id));
+        }
+        deleteFromServer(id, type);
     };
 
     const readOnServer = async (id) => {
         try {
-            const response = await axios.put(
+            await axios.put(
                 `https://mail-box-client-6e4dd-default-rtdb.asia-southeast1.firebasedatabase.app/${email.replace(
                     /[@.]/g,
                     ""
@@ -33,7 +61,6 @@ const MailList = ({ id, mail, subject, unRead, message }) => {
                     unRead: false,
                 }
             );
-            console.log(response.data);
         } catch (error) {
             alert(error);
         }

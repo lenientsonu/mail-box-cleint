@@ -50,6 +50,7 @@ const Inbox = () => {
                         mail={mail.recievedFrom}
                         subject={mail.subject}
                         message={mail.content}
+                        type='inbox'
                     />
                 );
             })}
