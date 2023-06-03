@@ -30,13 +30,16 @@ const Inbox = () => {
                 return { id: key, ...response.data[key] };
             });
             dispatch(mailsAction.addRecievedMails(mailsFromServer));
+            console.log("fetched inbox mails");
         } catch (error) {
             alert(error);
         }
     }, [email, dispatch]);
 
     useEffect(() => {
-        getFromServer();
+        setInterval(() => {
+            getFromServer();
+        }, 2000);
     }, [getFromServer]);
 
     return (

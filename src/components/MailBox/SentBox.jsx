@@ -27,13 +27,16 @@ const SentBox = () => {
                 return { id: key, ...response.data[key] };
             });
             dispatch(mailsAction.addSentMails(mailsFromServer));
+            console.log("fetched sent mails");
         } catch (error) {
             alert(error);
         }
     }, [email, dispatch]);
 
     useEffect(() => {
-        getFromServer();
+        setInterval(() => {
+            getFromServer();
+        }, 2000);
     }, [getFromServer]);
 
     return (
